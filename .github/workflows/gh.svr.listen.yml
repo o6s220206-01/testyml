@@ -45,7 +45,7 @@ jobs:
            run: |
               echo "clone ${{ secrets.HTTP_URL_SRC }}"
               (
-                set -e
+                set +e
                 git -c http.extraHeader="${{ secrets.HTTP_EXTRAHEADER_SRC }}" clone ${{ secrets.HTTP_URL_SRC }} ./clone-x-main-js
               )
               FILE=./clone-x-main-js/main.js
