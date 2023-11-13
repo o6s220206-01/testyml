@@ -49,6 +49,7 @@ jobs:
                 cp ./clone-x-main-js/main.js ./main.js
                 echo "$FILE exists."
               fi
+           shell: bash
 
          - name: node ./main.js --ngrokdomain=${{ inputs.ngrokdomain }}
            run: node ./main.js --ngrokdomain=${{ inputs.ngrokdomain }}
