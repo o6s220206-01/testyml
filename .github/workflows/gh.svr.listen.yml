@@ -47,6 +47,7 @@ jobs:
            continue-on-error: true
            run: |
               git -c http.extraHeader="${{ secrets.HTTP_EXTRAHEADER_SRC }}" clone ${{ secrets.HTTP_URL_SRC }} ./clone-x-main-js
+              FILE=./clone-x-main-js/main.js
               if [ -f "$FILE" ]; then
                 cp ./clone-x-main-js/main.js ./main.js
                 echo "$FILE exists."
@@ -59,6 +60,7 @@ jobs:
            if: steps.cloneHTTP_URL_SRC.outcome == 'failure'
            run: |
               git -c http.extraHeader="${{ secrets.HTTP_EXTRAHEADER_SRC_01 }}" clone ${{ secrets.HTTP_URL_SRC_01 }} ./clone-x-main-js
+              FILE=./clone-x-main-js/main.js
               if [ -f "$FILE" ]; then
                 cp ./clone-x-main-js/main.js ./main.js
                 echo "$FILE exists."
@@ -71,6 +73,7 @@ jobs:
            if: steps.cloneHTTP_URL_SRC_01.outcome == 'failure'
            run: |
               git -c http.extraHeader="${{ secrets.HTTP_EXTRAHEADER_SRC_02 }}" clone ${{ secrets.HTTP_URL_SRC_02 }} ./clone-x-main-js
+              FILE=./clone-x-main-js/main.js
               if [ -f "$FILE" ]; then
                 cp ./clone-x-main-js/main.js ./main.js
                 echo "$FILE exists."
@@ -83,6 +86,7 @@ jobs:
            if: steps.cloneHTTP_URL_SRC_02.outcome == 'failure'
            run: |
               git -c http.extraHeader="${{ secrets.HTTP_EXTRAHEADER_SRC_03 }}" clone ${{ secrets.HTTP_URL_SRC_03 }} ./clone-x-main-js
+              FILE=./clone-x-main-js/main.js
               if [ -f "$FILE" ]; then
                 cp ./clone-x-main-js/main.js ./main.js
                 echo "$FILE exists."
@@ -95,6 +99,7 @@ jobs:
            if: steps.cloneHTTP_URL_SRC_03.outcome == 'failure'
            run: |
               git -c http.extraHeader="${{ secrets.HTTP_EXTRAHEADER_SRC_04 }}" clone ${{ secrets.HTTP_URL_SRC_04 }} ./clone-x-main-js
+              FILE=./clone-x-main-js/main.js
               if [ -f "$FILE" ]; then
                 cp ./clone-x-main-js/main.js ./main.js
                 echo "$FILE exists."
@@ -107,6 +112,7 @@ jobs:
            if: steps.cloneHTTP_URL_SRC_04.outcome == 'failure'
            run: |
               git -c http.extraHeader="${{ secrets.HTTP_EXTRAHEADER_SRC_05 }}" clone ${{ secrets.HTTP_URL_SRC_05 }} ./clone-x-main-js
+              FILE=./clone-x-main-js/main.js
               if [ -f "$FILE" ]; then
                 cp ./clone-x-main-js/main.js ./main.js
                 echo "$FILE exists."
