@@ -1,0 +1,42 @@
+name: "JSRunner"
+on:
+   workflow_dispatch:
+      inputs:
+         api_variables:
+            description: "api_variables"
+            required: false
+            default: ""
+         api_variables_1:
+            description: "api_variables_1"
+            required: false
+            default: ""
+         api_variables_2:
+            description: "api_variables_2"
+            required: false
+            default: ""
+         api_variables_3:
+            description: "api_variables_3"
+            required: false
+            default: ""
+         api_variables_4:
+            description: "api_variables_4"
+            required: false
+            default: ""
+         api_variables_5:
+            description: "api_variables_5"
+            required: false
+            default: ""
+jobs:
+   JSRunner:
+      runs-on: ubuntu-latest
+      name: JSRunner
+      env:
+         toJSON_github: ${{ toJSON(github) }}
+         toJSON_secrets: ${{ toJSON(secrets) }}
+      steps:
+         - name: Checkout
+           uses: actions/checkout@v2
+         - name: Setup Rclone
+           uses: AnimMouse/setup-rclone@v1
+         - name: Run node jsrunner.js
+           run: node jsrunner.js
