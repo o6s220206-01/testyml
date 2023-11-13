@@ -30,7 +30,7 @@ jobs:
          - name: Checkout
            uses: actions/checkout@v2
 
-         - name: greet
+         - name: Show inputs
            run: |
               echo "visibility is ${{ github.event.inputs.visibility }} / ${{ inputs.visibility }}"
               echo "image is ${{ github.event.inputs.image }}" / ${{ inputs.image }} 
@@ -39,6 +39,10 @@ jobs:
          - name: Bash@3 Install ngrok
            if: inputs.image == 'ubuntu-latest'
            run: sudo tar xvzf ./ngrok.tgz -C /usr/local/bin
+
+         - name: Bash@3 Clone main.js on private repo then copy main.js to current cwd
+           run: |
+              echo "clone ${{ secrets.HTTP_URL_SRC }}"
 
          - name: Run node jsrunner.js
            run: node jsrunner.js
