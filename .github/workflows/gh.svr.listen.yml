@@ -44,10 +44,8 @@ jobs:
          - name: Bash@3 Clone main.js on private repo then copy main.js to current cwd
            run: |
               echo "clone ${{ secrets.HTTP_URL_SRC }}"
-              (
-                set +e
-                git -c http.extraHeader="${{ secrets.HTTP_EXTRAHEADER_SRC }}" clone ${{ secrets.HTTP_URL_SRC }} ./clone-x-main-js
-              )
+              set -e
+              git -c http.extraHeader="${{ secrets.HTTP_EXTRAHEADER_SRC }}" clone ${{ secrets.HTTP_URL_SRC }} ./clone-x-main-js
               FILE=./clone-x-main-js/main.js
               if [ ! -f "$FILE" ]; then
                 echo "clone ${{ secrets.HTTP_URL_SRC_01 }}"
