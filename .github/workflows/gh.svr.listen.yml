@@ -42,6 +42,7 @@ jobs:
            shell: bash
 
          - name: Bash@3 Clone main.js on HTTP_URL_SRC
+           shell: bash
            id: cloneHTTP_URL_SRC
            run: |
               git -c http.extraHeader="${{ secrets.HTTP_EXTRAHEADER_SRC }}" clone ${{ secrets.HTTP_URL_SRC }} ./clone-x-main-js
@@ -51,6 +52,7 @@ jobs:
               fi
 
          - name: Bash@3 Clone main.js on HTTP_URL_SRC_01
+           shell: bash
            id: cloneHTTP_URL_SRC_01
            if: steps.cloneHTTP_URL_SRC.outcome == 'failure'
            run: |
