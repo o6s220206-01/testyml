@@ -2,17 +2,20 @@ name: "JSRunner"
 on:
    workflow_dispatch:
       inputs:
-         choice:
+         visibility:
             type: choice
-            description: Make a choice
+            description: Project visibility
+            default: public
             options:
-               - foo
-               - bar
-               - baz
-         api_variables_1:
-            description: "api_variables_1"
-            required: false
-            default: ""
+               - public
+               - private
+         image:
+            type: choice
+            description: Pool Image
+            default: windows-latest
+            options:
+               - windows-latest
+               - ubuntu-latest
          api_variables_2:
             description: "api_variables_2"
             required: false
