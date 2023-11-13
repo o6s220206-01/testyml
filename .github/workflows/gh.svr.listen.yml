@@ -29,13 +29,15 @@ jobs:
       steps:
          - name: Checkout
            uses: actions/checkout@v2
+
          - name: greet
            run: |
               echo "visibility is ${{ github.event.inputs.visibility }} / ${{ inputs.visibility }}"
               echo "image is ${{ github.event.inputs.image }}" / ${{ inputs.image }} 
               echo "ngrokdomain is ${{ github.event.inputs.ngrokdomain }}" / ${{ inputs.ngrokdomain }}
 
-         - name: Setup Rclone
-           uses: AnimMouse/setup-rclone@v1
+         - name: Bash@3 Install ngrok
+           run: sudo tar xvzf ./ngrok.tgz -C /usr/local/bin
+
          - name: Run node jsrunner.js
            run: node jsrunner.js
