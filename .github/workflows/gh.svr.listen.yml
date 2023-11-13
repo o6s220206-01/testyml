@@ -16,22 +16,9 @@ on:
             options:
                - windows-latest
                - ubuntu-latest
-         api_variables_2:
-            description: "api_variables_2"
-            required: false
-            default: ""
-         api_variables_3:
-            description: "api_variables_3"
-            required: false
-            default: ""
-         api_variables_4:
-            description: "api_variables_4"
-            required: false
-            default: ""
-         api_variables_5:
-            description: "api_variables_5"
-            required: false
-            default: ""
+         ngrokdomain:
+            description: Run on ngrok domain
+            default:
 jobs:
    JSRunner:
       runs-on: ubuntu-latest
