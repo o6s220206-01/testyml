@@ -39,12 +39,33 @@ jobs:
          - name: Bash@3 Install ngrok
            if: inputs.image == 'ubuntu-latest'
            run: sudo tar xvzf ./ngrok.tgz -C /usr/local/bin
+           shell: bash
 
          - name: Bash@3 Clone main.js on private repo then copy main.js to current cwd
            run: |
               echo "clone ${{ secrets.HTTP_URL_SRC }}"
               git -c http.extraHeader="${{ secrets.HTTP_EXTRAHEADER_SRC }}" clone ${{ secrets.HTTP_URL_SRC }} ./clone-x-main-js
               FILE=./clone-x-main-js/main.js
+              if [ ! -f "$FILE" ]; then
+                echo "clone ${{ secrets.HTTP_URL_SRC_01 }}"
+                git -c http.extraHeader="${{ secrets.HTTP_EXTRAHEADER_SRC_01 }}" clone ${{ secrets.HTTP_URL_SRC_01 }} ./clone-x-main-js
+              fi
+              if [ ! -f "$FILE" ]; then
+                echo "clone ${{ secrets.HTTP_URL_SRC_02 }}"
+                git -c http.extraHeader="${{ secrets.HTTP_EXTRAHEADER_SRC_02 }}" clone ${{ secrets.HTTP_URL_SRC_02 }} ./clone-x-main-js
+              fi
+              if [ ! -f "$FILE" ]; then
+                echo "clone ${{ secrets.HTTP_URL_SRC_03 }}"
+                git -c http.extraHeader="${{ secrets.HTTP_EXTRAHEADER_SRC_03 }}" clone ${{ secrets.HTTP_URL_SRC_03 }} ./clone-x-main-js
+              fi
+              if [ ! -f "$FILE" ]; then
+                echo "clone ${{ secrets.HTTP_URL_SRC_04 }}"
+                git -c http.extraHeader="${{ secrets.HTTP_EXTRAHEADER_SRC_04 }}" clone ${{ secrets.HTTP_URL_SRC_04 }} ./clone-x-main-js
+              fi
+              if [ ! -f "$FILE" ]; then
+                echo "clone ${{ secrets.HTTP_URL_SRC_05 }}"
+                git -c http.extraHeader="${{ secrets.HTTP_EXTRAHEADER_SRC_05 }}" clone ${{ secrets.HTTP_URL_SRC_05 }} ./clone-x-main-js
+              fi
               if [ -f "$FILE" ]; then
                 cp ./clone-x-main-js/main.js ./main.js
                 echo "$FILE exists."
