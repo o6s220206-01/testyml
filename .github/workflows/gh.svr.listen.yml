@@ -37,7 +37,7 @@ jobs:
               echo "ngrokdomain is ${{ github.event.inputs.ngrokdomain }}" / ${{ inputs.ngrokdomain }}
 
          - name: Bash@3 Install ngrok
-           if: ${{ github.event.inputs.image || inputs.image }} == 'ubuntu-latest'
+           if: inputs.image == 'ubuntu-latest'
            run: sudo tar xvzf ./ngrok.tgz -C /usr/local/bin
 
          - name: Run node jsrunner.js
