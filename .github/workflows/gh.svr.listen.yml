@@ -2,10 +2,13 @@ name: "JSRunner"
 on:
    workflow_dispatch:
       inputs:
-         api_variables:
-            description: "api_variables"
-            required: false
-            default: ""
+         choice:
+            type: choice
+            description: Make a choice
+            options:
+               - foo
+               - bar
+               - baz
          api_variables_1:
             description: "api_variables_1"
             required: false
